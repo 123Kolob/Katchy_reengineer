@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Katchyway Leatherworks - High-quality leather goods including bags, wallets, belts, and accessories.">
     <title>Katchyway Leatherworks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* General styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            background-color: #f5f5f5;
+            color: #333;
         }
 
         .container {
@@ -22,97 +25,139 @@
         /* Header styles */
         header {
             background: #15317E;
-            color: #728FCE;
+            color: #fff;
             padding: 1rem 0;
         }
 
         header h1 {
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 2rem;
+            text-align: center;
         }
 
         nav ul {
             list-style: none;
-            padding: 1;
+            padding: 0;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
         }
 
         nav ul li {
-            margin-right: 1rem;
+            margin-right: 2rem;
         }
 
         nav ul li a {
             color: #fff;
             text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         /* Hero section styles */
         .hero {
             background: url('hero.jpg') no-repeat center center/cover;
-            color: #728FCE;
+            color: #fff;
             text-align: center;
-            padding: 5rem 0;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
 
         .hero h2 {
-            font-size: 2rem;
+            font-size: 3rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            z-index: 2;
+            position: relative;
         }
 
         /* Products section styles */
         .products {
             background: #f9f9f9;
-            padding: 2rem 0;
+            padding: 3rem 0;
         }
 
         .products h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             text-align: center;
+            margin-bottom: 2rem;
         }
 
         .product-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 2rem;
+            justify-content: center;
         }
 
         .product-item {
-            flex: 1 1 calc(33.333% - 1rem);
-            background: #4B5320	;
-            padding: 1rem;
+            flex: 1 1 calc(33.333% - 2rem);
+            background: #fff;
+            padding: 1.5rem;
             text-align: center;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
         }
 
         .product-item img {
             max-width: 100%;
             height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .product-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-item p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
         }
 
         /* About and Contact section styles */
+        .about, .contact {
+            padding: 3rem 0;
+        }
+
         .about {
             background: #e3f2fd;
-            padding: 2rem 0;
-        }
-
-        .about h2 {
-            font-size: 2rem;
-            text-align: center;
-        }
-
-        .about p {
-            text-align: center;
         }
 
         .contact {
             background: #ffecb3;
-            padding: 2rem 0;
         }
 
-        .contact h2 {
-            font-size: 2rem;
+        .about h2, .contact h2 {
+            font-size: 2.5rem;
             text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .about p, .contact p {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.6;
         }
 
         .contact form {
@@ -120,32 +165,46 @@
             flex-direction: column;
             max-width: 500px;
             margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .contact form label {
             margin-top: 1rem;
+            font-weight: 700;
         }
 
         .contact form input, .contact form textarea {
-            padding: 0.5rem;
+            padding: 0.8rem;
             margin-top: 0.5rem;
             border: 1px solid #ddd;
             border-radius: 4px;
+            font-size: 1rem;
         }
 
         .contact form button {
             background: #333;
-            color: ##728FCE;
-            padding: 0.5rem;
+            color: #fff;
+            padding: 1rem;
             border: none;
             border-radius: 4px;
-            margin-top: 1rem;
+            margin-top: 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact form button:hover {
+            background: #555;
         }
 
         /* Footer styles */
         footer {
             background: #333;
-            color: ##728FCE;
+            color: #fff;
             text-align: center;
             padding: 1rem 0;
         }
@@ -154,24 +213,67 @@
             color: #fff;
             text-decoration: none;
             margin: 0 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        footer .social-media a:hover {
+            color: #ffecb3;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: #fff;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-item {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-item::before {
+            content: '“';
+            font-size: 3rem;
+            color: #15317E;
+        }
+
+        .testimonial-item::after {
+            content: '”';
+            font-size: 3rem;
+            color: #15317E;
+        }
+
+        .testimonial-item span {
+            display: block;
+            margin-top: 1rem;
+            font-weight: bold;
+            color: #333;
         }
 
         /* Media queries for responsiveness */
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
             }
 
             .product-item {
-                flex: 1 1 calc(50% - 1rem);
+                flex: 1 1 calc(50% - 2rem);
             }
         }
 
         @media (max-width: 480px) {
             nav ul {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
             }
 
             .product-item {
@@ -179,7 +281,7 @@
             }
 
             .hero h2 {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
 
             .hero p {
@@ -215,60 +317,9 @@
             <h2>Our Products</h2>
             <div class="product-grid">
                 <div class="product-item">
-                    <img src="bag.jpg" alt="Leather Bag" style="width:700px;height:200px;">
+                    <img src="bag.jpg" alt="Leather Bag">
                     <h3>Leather Bag</h3>
                     <p>High-quality leather bag with a stylish design.</p>
                 </div>
-                <!-- More product items here -->
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>Katchyway Services was founded by Adam Inyang in Nigeria. We specialize in creating high-quality leather goods including bags, wallets, belts, and accessories. Our mission is to create stylish, durable, and affordable leather products that meet the needs of modern consumers while promoting ethical and sustainable practices in leatherwork.</p>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <form>
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required></textarea>
-
-                <button type="submit">Send</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Katchyway Leatherworks</p>
-            <div class="social-media">
-                <a href="https://facebook.com/katchyway">Facebook</a>
-                <a href="https://instagram.com/katchyway">Instagram</a>
-                <a href="https://linkedin.com/company/katchyway">LinkedIn</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.querySelector('form');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Thank you for your message!');
-                form.reset();
-            });
-        });
-    </script>
-</body>
-</html>
+                <div class="product-item">
+                    <img src="wallet.jpg" alt="Leather Wallet
