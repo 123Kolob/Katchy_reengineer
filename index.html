@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
         /* Header styles */
         header {
             background: #15317E;
-            color: #728FCE;
+            color: #fff;
             padding: 1rem 0;
         }
 
@@ -45,18 +46,41 @@
         nav ul li a {
             color: #fff;
             text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #FFD700;
         }
 
         /* Hero section styles */
         .hero {
             background: url('hero.jpg') no-repeat center center/cover;
-            color: #728FCE;
+            color: #fff;
             text-align: center;
             padding: 5rem 0;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         .hero h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            text-shadow: 1px 1px 2px #000;
         }
 
         /* Products section styles */
@@ -68,51 +92,71 @@
         .products h2 {
             font-size: 2rem;
             text-align: center;
+            margin-bottom: 2rem;
         }
 
-        .product-grid {
+        .carousel {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
         }
 
-        .product-item {
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-item {
             flex: 1 1 calc(33.333% - 1rem);
-            background: #4B5320	;
+            margin-right: 1rem;
+            background: #4B5320;
             padding: 1rem;
             text-align: center;
             border: 1px solid #ddd;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
         }
 
-        .product-item img {
+        .carousel-item:hover {
+            transform: scale(1.05);
+        }
+
+        .carousel-item img {
             max-width: 100%;
             height: auto;
+        }
+
+        .carousel-item h3 {
+            margin: 1rem 0;
+            color: #FFD700;
         }
 
         /* About and Contact section styles */
         .about {
             background: #e3f2fd;
             padding: 2rem 0;
+            text-align: center;
         }
 
         .about h2 {
             font-size: 2rem;
-            text-align: center;
+            margin-bottom: 1rem;
         }
 
         .about p {
-            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
         .contact {
             background: #ffecb3;
             padding: 2rem 0;
+            text-align: center;
         }
 
         .contact h2 {
             font-size: 2rem;
-            text-align: center;
+            margin-bottom: 1rem;
         }
 
         .contact form {
@@ -124,9 +168,11 @@
 
         .contact form label {
             margin-top: 1rem;
+            text-align: left;
         }
 
-        .contact form input, .contact form textarea {
+        .contact form input,
+        .contact form textarea {
             padding: 0.5rem;
             margin-top: 0.5rem;
             border: 1px solid #ddd;
@@ -135,25 +181,36 @@
 
         .contact form button {
             background: #333;
-            color: ##728FCE;
+            color: #FFD700;
             padding: 0.5rem;
             border: none;
             border-radius: 4px;
             margin-top: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact form button:hover {
+            background: #444;
         }
 
         /* Footer styles */
         footer {
             background: #333;
-            color: ##728FCE;
+            color: #FFD700;
             text-align: center;
             padding: 1rem 0;
         }
 
         footer .social-media a {
-            color: #fff;
+            color: #FFD700;
             text-decoration: none;
             margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        footer .social-media a:hover {
+            color: #fff;
         }
 
         /* Media queries for responsiveness */
@@ -163,7 +220,7 @@
                 align-items: flex-start;
             }
 
-            .product-item {
+            .carousel-item {
                 flex: 1 1 calc(50% - 1rem);
             }
         }
@@ -174,7 +231,7 @@
                 align-items: flex-start;
             }
 
-            .product-item {
+            .carousel-item {
                 flex: 1 1 100%;
             }
 
@@ -188,6 +245,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -213,13 +271,23 @@
     <section id="products" class="products">
         <div class="container">
             <h2>Our Products</h2>
-            <div class="product-grid">
-                <div class="product-item">
-                    <img src="bag.jpg" alt="Leather Bag" style="width:700px;height:200px;">
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="bag.jpg" alt="Leather Bag">
                     <h3>Leather Bag</h3>
                     <p>High-quality leather bag with a stylish design.</p>
                 </div>
-                <!-- More product items here -->
+                <div class="carousel-item">
+                    <img src="wallet.jpg" alt="Leather Wallet">
+                    <h3>Leather Wallet</h3>
+                    <p>Durable and sleek wallet with multiple compartments.</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="belt.jpg" alt="Leather Belt">
+                    <h3>Leather Belt</h3>
+                    <p>Classic leather belt with a timeless design.</p>
+                </div>
+                <!-- Add more carousel items as needed -->
             </div>
         </div>
     </section>
@@ -255,20 +323,4 @@
             <div class="social-media">
                 <a href="https://facebook.com/katchyway">Facebook</a>
                 <a href="https://instagram.com/katchyway">Instagram</a>
-                <a href="https://linkedin.com/company/katchyway">LinkedIn</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.querySelector('form');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Thank you for your message!');
-                form.reset();
-            });
-        });
-    </script>
-</body>
-</html>
+                <a href="https://linkdIn.com/katchyway">linkdIn</a>
