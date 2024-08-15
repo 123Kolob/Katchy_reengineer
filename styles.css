@@ -1,4 +1,4 @@
-
+   <style>
         /* General styles */
         body {
             font-family: Arial, sans-serif;
@@ -8,7 +8,7 @@
         }
 
         .container {
-            width: 90%;
+            max-width: 90%;
             margin: 0 auto;
         }
 
@@ -182,7 +182,7 @@
             transition: background 0.3s;
         }
 
-        .contact form button: hover {
+        .contact form button:hover {
             background: #444;
         }
 
@@ -201,7 +201,7 @@
             transition: color 0.3s;
         }
 
-        footer .social-media a: hover {
+        footer .social-media a:hover {
             color: #fff;
         }
 
